@@ -249,6 +249,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/新大陆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/29/新大陆/" itemprop="url">新大陆</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T10:37:50+08:00">
+                2017-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="noopener">ML Lecture 1: Regression - Case Study</a></p>
+<p><a href="https://www.youtube.com/watch?v=D_S6y0Jm6dQ" target="_blank" rel="noopener">ML Lecture 2: Where does the error come from?</a></p>
+<p><a href="https://www.youtube.com/watch?v=yKKNr-QKz2Q" target="_blank" rel="noopener">ML Lecture 3-1: Gradient Descent</a></p>
+<p><a href="https://www.youtube.com/watch?v=fZAZUYEeIMg" target="_blank" rel="noopener">ML Lecture 4: Classification</a></p>
+<p><a href="https://www.youtube.com/watch?v=hSXFuypLukA" target="_blank" rel="noopener">ML Lecture 5: Logistic Regression</a></p>
+<p><a href="https://www.youtube.com/watch?v=Dr-WRlEFefw" target="_blank" rel="noopener">ML Lecture 6: Brief Introduction of Deep Learning</a></p>
+<p><a href="https://www.youtube.com/watch?v=ibJpTrp5mcE" target="_blank" rel="noopener">ML Lecture 7: Backpropagation</a></p>
+<p><a href="https://www.youtube.com/watch?v=Lx3l4lOrquw" target="_blank" rel="noopener">ML Lecture 8-1: “Hello world” of deep learning</a></p>
+<p><a href="https://www.youtube.com/watch?v=5BJDJd-dzzg" target="_blank" rel="noopener">ML Lecture 8-2: Keras 2.0</a></p>
+<p><a href="https://www.youtube.com/watch?v=L8unuZNpWw8" target="_blank" rel="noopener">ML Lecture 8-3: Keras Demo</a></p>
+<p><a href="https://www.youtube.com/watch?v=FrKWiRv254g" target="_blank" rel="noopener">ML Lecture 10: Convolutional Neural Network</a></p>
+<p><a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank" rel="noopener">Hvass-Labs tensorflow教程</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/MNIST-简单线性模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -496,137 +627,6 @@
 <p>按第1个维度，按列压扁，从左往右看，去平均数，也就是取每行的平均数</p>
 <p>keep_dims =True 看过去咋样就咋样，不会把取到的值转置为1</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">m = tf.constant([[<span class="number">-1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>]])</span><br><span class="line"><span class="comment">#[[-1.  2.  3.  4.]</span></span><br><span class="line"><span class="comment">#  [ 1.  2.  3.  4.]</span></span><br><span class="line"><span class="comment">#  [ 9.  8.  7.  6.]]</span></span><br><span class="line">print(sess.run(tf.reduce_mean(m, <span class="number">0</span>))) <span class="comment"># 按列求平均数</span></span><br><span class="line"><span class="comment"># [ 3.          4.          4.33333349  4.66666651]</span></span><br><span class="line">print(sess.run(tf.reduce_mean(m, <span class="number">0</span>, <span class="keyword">True</span>)))</span><br><span class="line"><span class="comment"># [[ 3.          4.          4.33333349  4.66666651]]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">除非keep_dims是真，tensor的rank都会将为1，如果keep_dims是真，被降低的维度被保留为1</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(sess.run(tf.reduce_mean(m, <span class="number">1</span>, <span class="keyword">True</span>)))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">[[ 2. ]</span></span><br><span class="line"><span class="string"> [ 2.5]</span></span><br><span class="line"><span class="string"> [ 7.5]]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/李宏毅机器学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiejq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="虫虫呀">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/李宏毅机器学习/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T08:55:44+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="新大陆"><a href="#新大陆" class="headerlink" title="新大陆"></a>新大陆</h2><p><a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="noopener">ML Lecture 1: Regression - Case Study</a></p>
-<p><a href="https://www.youtube.com/watch?v=D_S6y0Jm6dQ" target="_blank" rel="noopener">ML Lecture 2: Where does the error come from?</a></p>
-<p><a href="https://www.youtube.com/watch?v=yKKNr-QKz2Q" target="_blank" rel="noopener">ML Lecture 3-1: Gradient Descent</a></p>
-<p><a href="https://www.youtube.com/watch?v=fZAZUYEeIMg" target="_blank" rel="noopener">ML Lecture 4: Classification</a></p>
-<p><a href="https://www.youtube.com/watch?v=hSXFuypLukA" target="_blank" rel="noopener">ML Lecture 5: Logistic Regression</a></p>
-<p><a href="https://www.youtube.com/watch?v=Dr-WRlEFefw" target="_blank" rel="noopener">ML Lecture 6: Brief Introduction of Deep Learning</a></p>
-<p><a href="https://www.youtube.com/watch?v=ibJpTrp5mcE" target="_blank" rel="noopener">ML Lecture 7: Backpropagation</a></p>
-<p><a href="https://www.youtube.com/watch?v=Lx3l4lOrquw" target="_blank" rel="noopener">ML Lecture 8-1: “Hello world” of deep learning</a></p>
-<p><a href="https://www.youtube.com/watch?v=5BJDJd-dzzg" target="_blank" rel="noopener">ML Lecture 8-2: Keras 2.0</a></p>
-<p><a href="https://www.youtube.com/watch?v=L8unuZNpWw8" target="_blank" rel="noopener">ML Lecture 8-3: Keras Demo</a></p>
-<p><a href="https://www.youtube.com/watch?v=FrKWiRv254g" target="_blank" rel="noopener">ML Lecture 10: Convolutional Neural Network</a></p>
-<p><a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank" rel="noopener">Hvass-Labs tensorflow教程</a></p>
 
           
         
