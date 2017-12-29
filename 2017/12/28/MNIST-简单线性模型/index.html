@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/cc.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cc.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cc.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tensorflow," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MNIST数据集打印MNIST数据集的长度1234Size of:- Training-set:		55000- Test-set:		10000- Validation-set:	5000 MNIST的one-hot编码向量为1的下标是图片对应的分类。 1234567891011121314print(data.test.labels[0:5, :])# 将one-hot编码转化为对应的数字da">
+<meta name="keywords" content="tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MNIST_简单线性模型">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/MNIST-简单线性模型/index.html">
+<meta property="og:site_name" content="虫虫呀">
+<meta property="og:description" content="MNIST数据集打印MNIST数据集的长度1234Size of:- Training-set:		55000- Test-set:		10000- Validation-set:	5000 MNIST的one-hot编码向量为1的下标是图片对应的分类。 1234567891011121314print(data.test.labels[0:5, :])# 将one-hot编码转化为对应的数字da">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-29T02:20:45.125Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MNIST_简单线性模型">
+<meta name="twitter:description" content="MNIST数据集打印MNIST数据集的长度1234Size of:- Training-set:		55000- Test-set:		10000- Validation-set:	5000 MNIST的one-hot编码向量为1的下标是图片对应的分类。 1234567891011121314print(data.test.labels[0:5, :])# 将one-hot编码转化为对应的数字da">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '谢江琼'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/28/MNIST-简单线性模型/"/>
+
+
+
+
+
+  <title>MNIST_简单线性模型 | 虫虫呀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">虫虫呀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">苦练含笑半步癫</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/MNIST-简单线性模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MNIST_简单线性模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T23:13:05+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h2><h3 id="打印MNIST数据集的长度"><a href="#打印MNIST数据集的长度" class="headerlink" title="打印MNIST数据集的长度"></a>打印MNIST数据集的长度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Size of:</span><br><span class="line">- Training-set:		<span class="number">55000</span></span><br><span class="line">- Test-set:		<span class="number">10000</span></span><br><span class="line">- Validation-set:	<span class="number">5000</span></span><br></pre></td></tr></table></figure>
+<h3 id="MNIST的one-hot编码"><a href="#MNIST的one-hot编码" class="headerlink" title="MNIST的one-hot编码"></a>MNIST的one-hot编码</h3><p>向量为1的下标是图片对应的分类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">print(data.test.labels[<span class="number">0</span>:<span class="number">5</span>, :])</span><br><span class="line"><span class="comment"># 将one-hot编码转化为对应的数字</span></span><br><span class="line">data.test.cls = np.array([label.argmax() <span class="keyword">for</span> label <span class="keyword">in</span> data.test.labels])</span><br><span class="line">print(data.test.cls[<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensorflow的arg开头的api表示的是取向量的index</span></span><br><span class="line"><span class="string">tensorflow的以reduce开头的api表示的是将矩阵降维(压扁)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line">[<span class="number">7</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="定义辅助函数画出MNIST的图像"><a href="#定义辅助函数画出MNIST的图像" class="headerlink" title="定义辅助函数画出MNIST的图像"></a>定义辅助函数画出MNIST的图像</h3><p><a href="https://github.com/ccwhale/tfTutorials/blob/master/tutorials/hvassTutorials/helperFunction.py" target="_blank" rel="noopener">辅助函数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot the images and labels using our helper-function above.</span></span><br><span class="line"><span class="comment"># Get the first images from the test-set.</span></span><br><span class="line"><span class="comment"># 画出数据集的前9个图片</span></span><br><span class="line">images = data.test.images[<span class="number">0</span>:<span class="number">9</span>]</span><br><span class="line">helperFunction.plot_images(images=images, cls_true=cls_true)</span><br></pre></td></tr></table></figure>
+<h2 id="三个步骤"><a href="#三个步骤" class="headerlink" title="三个步骤"></a>三个步骤</h2><h3 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create the model</span></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, img_size_flat])</span><br><span class="line">y_true = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_classes])</span><br><span class="line">y_true_cls = tf.placeholder(tf.int64, [<span class="keyword">None</span>])</span><br><span class="line">weights = tf.Variable(tf.zeros([img_size_flat, num_classes]))</span><br><span class="line">biases = tf.Variable(tf.zeros([num_classes]))</span><br><span class="line"></span><br><span class="line">logits = tf.matmul(x, weights) + biases <span class="comment">#定义模型</span></span><br><span class="line">y_pred = tf.nn.softmax(logits) <span class="comment"># 预测值</span></span><br><span class="line">y_pred_cls = tf.argmax(y_pred, axis=<span class="number">1</span>) <span class="comment"># 按照列reduce 返回每行为1的下标值</span></span><br></pre></td></tr></table></figure>
+<p>x: 表示有 -1 * 784维的输入 -1表示输入任意的图片数</p>
+<p>W: 权重，10表示是要将图片分类为0,1,2..9的分类数目</p>
+<p>b:表示偏差</p>
+<p>通过这个模型得到预测值为 y = tf.argmax(y, 1) 每行最大的那个数的下标就是预测得到的分类值。</p>
+<p>假设有两张一个2*2像素的图片，这两张图片可能是表示的是1或者2</p>
+<p>[[1,2,3,4]</p>
+<p>[3,4,5,6]]</p>
+<p>定义[[w1,w2],[w3,w4],[w5,w6],[w7,w8]]</p>
+<p>矩阵相乘得到第一行: <code>[1*w1+2*w2+3*w3+4*w4,1*w2+2*w4+3*w6+4*w8]</code></p>
+<p>实际告诉我们第一张图片是1，那就是调整所有的w和偏差使得1<em>w2+2</em>w4+3<em>w6+4</em>w8较大，1<em>w1+2</em>w2+3<em>w3+4</em>w4较小。每次训练都是在更新所有的w和b</p>
+<h3 id="tensorflow的三个概念"><a href="#tensorflow的三个概念" class="headerlink" title="tensorflow的三个概念"></a>tensorflow的三个概念</h3><h4 id="tensorflow图的概念-谷歌翻译"><a href="#tensorflow图的概念-谷歌翻译" class="headerlink" title="tensorflow图的概念(谷歌翻译)"></a>tensorflow图的概念(谷歌翻译)</h4><blockquote>
+<p>TensorFlow的全部目的就是要有一个所谓的计算图，比直接在Python中执行相同的计算更有效。 TensorFlow可以比NumPy更高效，因为TensorFlow知道必须执行的整个计算图，而NumPy一次只知道单个数学运算的计算。</p>
+<p>TensorFlow还可以自动计算优化图的变量所需的梯度，以使模型更好地运行。这是因为图形是简单数学表达式的组合，所以整个图形的梯度可以使用导数的链式法则来计算。</p>
+<p>TensorFlow也可以利用多核CPU和GPU，而Google甚至为TensorFlow建立了专门的芯片，这些芯片被称为TPU（张量处理单元），甚至比GPU更快。</p>
+<p>张量流图由以下部分组成：</p>
+<p>用于将输入更改为图形的占位符变量。</p>
+<p>要进行优化的模型变量，以使模型更好地运行。</p>
+<p>这个模型本质上只是一个数学函数，它在占位符变量和模型变量的输入中计算一些输出。可以用来指导变量优化的成本度量。更新模型变量的优化方法。</p>
+<p>另外，张量流图还可以包含各种调试语句，例如用于记录使用TensorBoard的数据，本教程未涉及。</p>
+</blockquote>
+<p> <strong>注解</strong>:</p>
+<ol>
+<li>tensorflow的整个图形梯度可以使用导数(partial derivatives)的链式法则来计算,这里要写总结</li>
+<li>tensorflow可以在GPU上加速，要设置批次</li>
+</ol>
+<h5 id="占位变量"><a href="#占位变量" class="headerlink" title="占位变量"></a>占位变量</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We know that MNIST images are 28 pixels in each dimension.</span></span><br><span class="line">img_size = <span class="number">28</span></span><br><span class="line"><span class="comment"># Images are stored in one-dimensional arrays of this length.</span></span><br><span class="line">img_size_flat = img_size * img_size</span><br><span class="line"><span class="comment"># Tuple with height and width of images used to reshape arrays.</span></span><br><span class="line">img_shape = (img_size, img_size)</span><br><span class="line"><span class="comment"># Number of classes, one class for each of 10 digits.</span></span><br><span class="line">num_classes = <span class="number">10</span></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, img_size_flat])</span><br><span class="line">y_true = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_classes])</span><br><span class="line">y_true_cls = tf.placeholder(tf.int64, [<span class="keyword">None</span>])</span><br></pre></td></tr></table></figure>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weights = tf.Variable(tf.zeros([img_size_flat, num_classes]))</span><br><span class="line">biases = tf.Variable(tf.zeros([num_classes]))</span><br></pre></td></tr></table></figure>
+<h3 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h3><p>真实值和预测值之间的差距就是损失函数，在训练过程中每次更新variable都将损失值减小，就是训练的目的。</p>
+<ol>
+<li><a href="">为什么交叉熵可以衡量真实值和预测值的差距</a></li>
+<li><a href="">什么是softmax</a></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits,</span><br><span class="line">                                                       labels=y_true)</span><br><span class="line">cost = tf.reduce_mean(cross_entropy)</span><br></pre></td></tr></table></figure>
+<h3 id="定义优化函数"><a href="#定义优化函数" class="headerlink" title="定义优化函数"></a>定义优化函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cost)</span><br></pre></td></tr></table></figure>
+<p><a href="">优化函数的原理,tensorflow包含的优化API,梯度函数的学习率如何影响机器学习,什么是向前传播向后传播,为什么要使用softmax</a></p>
+<h3 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Train</span></span><br><span class="line">  <span class="comment"># 训练循环1000次</span></span><br><span class="line">  <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    <span class="comment"># 每次batch从60000个training data中随机选取100个图片进行训练，一次epoch更新100次变量的数据</span></span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Test trained model</span></span><br><span class="line">  correct_prediction = tf.equal(tf.argmax(y, <span class="number">1</span>), y_)</span><br><span class="line">  accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line">  print(sess.run(W))</span><br><span class="line">  print(sess.run(b))     </span><br><span class="line">  print(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images,</span><br><span class="line">                                      y_: mnist.test.labels&#125;))</span><br></pre></td></tr></table></figure>
+<p>使用小的随机数据叫做随机训练，在这个例子中，叫做随机梯度下降。理想状态下，我们希望每次训练所有的数据都能用上，因为这能给我们所做的训练一个好的场景，但是这样的训练开销很大。</p>
+<h2 id="辅助函数显示性能"><a href="#辅助函数显示性能" class="headerlink" title="辅助函数显示性能"></a>辅助函数显示性能</h2><p><a href="https://github.com/ccwhale/tfTutorials/tree/master/tutorials/hvassTutorials/performance" target="_blank" rel="noopener">看看性能</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/28/tensorflowAPI-and-Mathematics/" rel="next" title="tensorflowAPI and Mathematics">
+                <i class="fa fa-chevron-left"></i> tensorflowAPI and Mathematics
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/WechatIMG2.jpeg"
+                alt="xiejq" />
+            
+              <p class="site-author-name" itemprop="name">xiejq</p>
+              <p class="site-description motion-element" itemprop="description">入门AI</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ccwhale" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:392629711@qq.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MNIST数据集"><span class="nav-number">1.</span> <span class="nav-text">MNIST数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打印MNIST数据集的长度"><span class="nav-number">1.1.</span> <span class="nav-text">打印MNIST数据集的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MNIST的one-hot编码"><span class="nav-number">1.2.</span> <span class="nav-text">MNIST的one-hot编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义辅助函数画出MNIST的图像"><span class="nav-number">1.3.</span> <span class="nav-text">定义辅助函数画出MNIST的图像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个步骤"><span class="nav-number">2.</span> <span class="nav-text">三个步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义模型"><span class="nav-number">2.1.</span> <span class="nav-text">定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tensorflow的三个概念"><span class="nav-number">2.2.</span> <span class="nav-text">tensorflow的三个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tensorflow图的概念-谷歌翻译"><span class="nav-number">2.2.1.</span> <span class="nav-text">tensorflow图的概念(谷歌翻译)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#占位变量"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">占位变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义损失函数"><span class="nav-number">2.3.</span> <span class="nav-text">定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义优化函数"><span class="nav-number">2.4.</span> <span class="nav-text">定义优化函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始训练"><span class="nav-number">2.5.</span> <span class="nav-text">开始训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅助函数显示性能"><span class="nav-number">3.</span> <span class="nav-text">辅助函数显示性能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiejq</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
