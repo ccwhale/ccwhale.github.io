@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数 $$\sum\limits_{j} W_{i,~ j} x_j + b_i$$ 对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zero">
+<meta name="description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zeros([784, 10]))# tf.matmul(x, W) (-1,784) (">
 <meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MNIST FOR ML">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/index.html">
 <meta property="og:site_name" content="虫虫呀">
-<meta property="og:description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数 $$\sum\limits_{j} W_{i,~ j} x_j + b_i$$ 对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zero">
+<meta property="og:description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zeros([784, 10]))# tf.matmul(x, W) (-1,784) (">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/softmax.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/cross_entropy.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/IMG_0712.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/IMG_0713.jpg">
-<meta property="og:updated_time" content="2018-01-05T09:32:58.287Z">
+<meta property="og:updated_time" content="2018-01-09T10:12:12.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MNIST FOR ML">
-<meta name="twitter:description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数 $$\sum\limits_{j} W_{i,~ j} x_j + b_i$$ 对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zero">
+<meta name="twitter:description" content="MNIST FOR MLtensorflowtensorflow.org tensorflow官网源代码 更详细的教程 softmax函数什么是softmax函数对应代码中 123456x = tf.placeholder(tf.float32, [None, 784])W = tf.Variable(tf.zeros([784, 10]))# tf.matmul(x, W) (-1,784) (">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/05/MNIST-FOR-ML/softmax.jpg">
 
 
@@ -328,8 +328,7 @@
         <h2 id="MNIST-FOR-ML"><a href="#MNIST-FOR-ML" class="headerlink" title="MNIST FOR ML"></a>MNIST FOR ML</h2><p>tensorflow<a href="https://www.tensorflow.org/get_started/mnist/beginners" target="_blank" rel="noopener">tensorflow.org</a></p>
 <p><a href="https://github.com/ccwhale/tfTutorials/blob/master/tutorials/mnist/mnist_softmax.py" target="_blank" rel="noopener">tensorflow官网源代码</a></p>
 <p><a href="https://github.com/ccwhale/tfTutorials/blob/master/tutorials/hvassTutorials/simpleLinearModel.py" target="_blank" rel="noopener">更详细的教程</a></p>
-<h3 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h3><h4 id="什么是softmax函数"><a href="#什么是softmax函数" class="headerlink" title="什么是softmax函数"></a>什么是softmax函数</h4><p> $$\sum\limits_{j} W_{i,~ j} x_j + b_i$$</p>
-<p>对应代码中</p>
+<h3 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h3><h4 id="什么是softmax函数"><a href="#什么是softmax函数" class="headerlink" title="什么是softmax函数"></a>什么是softmax函数</h4><p>对应代码中</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>, <span class="number">10</span>]))</span><br><span class="line"><span class="comment"># tf.matmul(x, W) (-1,784) (784,10)得到y (-1,10)的矩阵</span></span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"><span class="comment"># y是预测值 这是训练定义的模型</span></span><br><span class="line">y = tf.matmul(x, W) + b</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/01/05/MNIST-FOR-ML/softmax.jpg" alt="softmax"></p>
 <h4 id="交叉熵为什么可以评估系统的好坏"><a href="#交叉熵为什么可以评估系统的好坏" class="headerlink" title="交叉熵为什么可以评估系统的好坏"></a>交叉熵为什么可以评估系统的好坏</h4><p>对应代码</p>
@@ -346,8 +345,8 @@
 <li><strong>可以将输出值控制到[0,1) 之间，在求损失函数的时候能够保证loss的值始终为正值。</strong></li>
 </ol>
 <p>第一层 函数 ： y = tf.matmul(x,w)+b</p>
-<p>第二次函数 ： s = softmax(y)</p>
-<p>第三层函数 :  loss = -y真实值lns</p>
+<p>第二次函数 ： s = softmax(y)     0&lt;=s&lt;1=0</p>
+<p>第三层函数 :  loss = -y真实值ln s  loss函数的值恒为正值，因此需要取反</p>
 <p>利用链式求导法则，求loss对每个w的偏倒数如下。</p>
 <p><img src="/2018/01/05/MNIST-FOR-ML/IMG_0712.jpg" alt="IMG_0712"></p>
 <p><img src="/2018/01/05/MNIST-FOR-ML/IMG_0713.jpg" alt="IMG_0713"></p>
@@ -390,6 +389,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/08/检验softmax/" rel="prev" title="检验softmax">
+                检验softmax <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -470,7 +473,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

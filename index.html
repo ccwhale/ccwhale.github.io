@@ -249,6 +249,291 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/cifar数据集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/cifar数据集/" itemprop="url">cifar数据集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T17:08:05+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="cifar数据集官方demo"><a href="#cifar数据集官方demo" class="headerlink" title="cifar数据集官方demo"></a>cifar数据集官方demo</h2><p><img src="/2018/01/08/cifar数据集/professional_demo.png" alt="professional_demo"></p>
+<h3 id="数据集的结构"><a href="#数据集的结构" class="headerlink" title="数据集的结构"></a>数据集的结构</h3><h4 id="数据集下载和解压"><a href="#数据集下载和解压" class="headerlink" title="数据集下载和解压"></a>数据集下载和解压</h4><p>源码是cifar.py</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/检验softmax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/检验softmax/" itemprop="url">检验softmax</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:05:47+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="是否大于5岁的测试demo"><a href="#是否大于5岁的测试demo" class="headerlink" title="是否大于5岁的测试demo"></a>是否大于5岁的测试demo</h2><p><a href="http://geek.csdn.net/news/detail/163735" target="_blank" rel="noopener">csdn</a></p>
+<p><a href="https://github.com/ccwhale/tensorflowDemo/blob/master/trials/validateSoftmax.py" target="_blank" rel="noopener">可执行代码的位置</a></p>
+<p><img src="/2018/01/08/检验softmax/firstpicture.png" alt="firstpicture"></p>
+<h3 id="生成训练数据和测试数据"><a href="#生成训练数据和测试数据" class="headerlink" title="生成训练数据和测试数据"></a>生成训练数据和测试数据</h3><p>模型的label数据集是one-hot编码或者是它的真实值</p>
+<p>如果year大于5岁，则标签设置为：[0, 0, 1]；  数组的第二个位置为1，因此标签的真实分类是2</p>
+<p>否则，标签设置为：[0, 1, 0]。数组的第一个位置为1，因此标签的真实分类是1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成(6000,2)的训练集合</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'label.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'train.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">6000</span>):</span><br><span class="line">            a = random.randint(<span class="number">0</span>, <span class="number">9</span>)</span><br><span class="line">            <span class="keyword">if</span> a &gt; <span class="number">5</span>:</span><br><span class="line">                file.write(<span class="string">'2'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                file.write(<span class="string">'1'</span>)</span><br><span class="line">            f.write(str(a) + <span class="string">'1'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成(1000,2)的训练集合</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'label_test.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'train_test.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">            a = random.randint(<span class="number">0</span>, <span class="number">9</span>)</span><br><span class="line">            <span class="keyword">if</span> a &gt; <span class="number">5</span>:</span><br><span class="line">                file.write(<span class="string">'2'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                file.write(<span class="string">'1'</span>)</span><br><span class="line">            f.write(str(a) + <span class="string">'1'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="定义训练模型"><a href="#定义训练模型" class="headerlink" title="定义训练模型"></a>定义训练模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义训练模型 tf.placeholder是是需要喂养的数据 tf.Variable()是需要通过训练不断优化得到的变量</span></span><br><span class="line"><span class="comment"># y_是[None,2]训练数据的真实分类</span></span><br><span class="line">    x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">2</span>])</span><br><span class="line">    w = tf.Variable(tf.zeros([<span class="number">2</span>, <span class="number">3</span>]))</span><br><span class="line">    b = tf.Variable(tf.zeros([<span class="number">3</span>]))</span><br><span class="line">    y = tf.matmul(x, w) + b</span><br><span class="line">    y_ = tf.placeholder(tf.int64, [<span class="keyword">None</span>])  <span class="comment"># 一维的,就是它的真实值</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/01/08/检验softmax/linear_model.jpg" alt="linear_model"></p>
+<p>一次输入就会更新定义的6个w和3个b(bias偏差)</p>
+<h2 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cross_entropy = tf.losses.sparse_softmax_cross_entropy(logits=y, labels=y_)</span><br></pre></td></tr></table></figure>
+<p>logits=y 是预测值</p>
+<p>labels=y_ 是真实值</p>
+<p><a href="https://ccwhale.github.io/2017/12/28/tensorflowAPI-and-Mathematics/" target="_blank" rel="noopener">以reduce开头的api将二维矩阵压扁</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个函数是由一系列操作封装好的</span></span><br><span class="line"><span class="comment"># The raw formulation of cross-entropy,</span></span><br><span class="line"><span class="comment">#  python有一组以reduce开头的api,作用是给将二维矩阵压扁。0代表行1代表列，</span></span><br><span class="line"><span class="comment">#  因此下面代码是按列将数组压扁，按照列，就是从列看过去，从左边看过去，压缩二维数组，也就是取每行的和</span></span><br><span class="line"><span class="comment">#  如果没有指定行或者列，取所有值的平均值</span></span><br><span class="line"><span class="comment">#   tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # 矩阵的dot product</span></span><br><span class="line"><span class="comment">#                                        reduction_indices=[1]))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># can be numerically unstable.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># So here we use tf.losses.sparse_softmax_cross_entropy on the raw</span></span><br><span class="line"><span class="comment"># logit outputs of 'y', and then average across the batch.</span></span><br></pre></td></tr></table></figure>
+<h2 id="定义优化函数"><a href="#定义优化函数" class="headerlink" title="定义优化函数"></a>定义优化函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+<p>tensorflow中包含很多优化函数。优化函数有两个参数:</p>
+<ol>
+<li>learning rate 学习率，决定每次输入一次数据，根据偏导更新每个权重的步长</li>
+<li>cross_entropy 交叉熵函数，学习的过程就是使函数的熵值变小。</li>
+</ol>
+<p><strong>优化函数的输入也是函数</strong></p>
+<p><a href="https://ccwhale.github.io/2018/01/05/MNIST-FOR-ML/" target="_blank" rel="noopener">交叉熵为什么可以评价权重的好坏</a></p>
+<p>0.5是优化函数的learning rate。</p>
+<h3 id="梯度下降-Gradient-Descent-的策略"><a href="#梯度下降-Gradient-Descent-的策略" class="headerlink" title="梯度下降(Gradient Descent)的策略"></a>梯度下降(Gradient Descent)的策略</h3><h4 id="使用可以自我调整learning-rate的优化函数"><a href="#使用可以自我调整learning-rate的优化函数" class="headerlink" title="使用可以自我调整learning rate的优化函数"></a>使用可以自我调整learning rate的优化函数</h4><p>在训练的过程中，我们假定刚开始训练的时候，离cross_entropy的最小值(最低点)很远，这个时候我们希望learning rate很大。当训练快要接近函数的最低点的时候，我们希望learning rate很小。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.8</span>).minimize(cross_entropy)</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    调整不同的优化函数显示不同的准确度(控制learning Rate为0.5)</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdamOptimizer      | 0.8679</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdagradOptimizer   | 0.9202</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | GradientDescentOptimizer | 0.9152</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    调整不同的learning rate(控制梯度函数为GradientDescentOptimizer 0.5=0.9152 )</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.1                | 0.9097</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.2                | 0.9163</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.3                 | 0.9181</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.8                 | 0.9234</span></span><br><span class="line"><span class="string">    ==============================</span></span><br></pre></td></tr></table></figure>
+<h5 id="AdagradOptimizer"><a href="#AdagradOptimizer" class="headerlink" title="AdagradOptimizer"></a>AdagradOptimizer</h5><p>是一个自我调整learning rate的函数</p>
+<p>$$w^{t+1} = w^t - \frac{\eta}{\sum_{i=0}^t (g^i)^2} * g^t$$<br>优化函数认为训练的开始梯度Gradient(也就是偏导)很大，离训练的终点很小，需要很大的learning rate</p>
+<p>在AdagradOptimizer方法中：</p>
+<p>$g^t$很大的时候，分母也很大，$\eta$就很小</p>
+<p>$g^t$很小的时候，分母不一定很小，因为分母是前面所有导数的和，$\eta$就可能还是很小</p>
+<p><strong>AdagradOptimizer</strong> 的作用是强化反差：</p>
+<p>当$g^t$之前都很小，突然变得很大，$\eta$就变的很小，此时移动的步长就很小了(不知道理解的对不对，待修正)</p>
+<h5 id="Vanilla-Gradient-Descent"><a href="#Vanilla-Gradient-Descent" class="headerlink" title="Vanilla Gradient Descent"></a>Vanilla Gradient Descent</h5><p>$$<br>w^{t+1}  =  w^t - \frac{\eta}{\sqrt{t+1}} \frac{\partial L(u^t)}{\partial W}<br>$$</p>
+<p>可以看到 当t越大(t代表求导的次数，也就是输入的训练集的个数)，t+1越大，随着迭代的次数越多<br>$$<br>learningrate = \frac{n}{\sqrt{t+1}}<br>$$<br>learning rate 越小</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Md工具 typora</span><br><span class="line">w^&#123;t+<span class="number">1</span>&#125;  =  w^t - \frac&#123;n&#125;&#123;\sqrt&#123;t+<span class="number">1</span>&#125;&#125; \frac&#123;\partial L(u^t)&#125;&#123;\partial W&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>AdagradOptimizer是比较稳定的优化函数，上面的实验也是AdagradOptimizer的准确率最高</strong></p>
+<h4 id="使用随机Gradient-Descent-Stochastic-SGD"><a href="#使用随机Gradient-Descent-Stochastic-SGD" class="headerlink" title="使用随机Gradient Descent(Stochastic SGD)"></a>使用随机Gradient Descent(Stochastic SGD)</h4><p>在MNIST数据集中有55000个训练集合。在训练过程中不是每次都选取55000张图片进行训练，而是随机选取图片进行多轮迭代。</p>
+<p>这样做的好处是，假如一次训练使损失函数(cross_entropy)到达了斜率为0的点，但不是函数的最低点。函数是局部最低点。这一点的左边的斜率是负值(正值)，右边的斜率是负值(正值)的这一点，优化函数就卡在这个位置，以为这个就是最优解。另一轮的训练又将函数从这一点移开，再进行下一次优化。</p>
+<p><img src="/2018/01/08/检验softmax/局部最优解.png" alt="局部最优解"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Size of:</span><br><span class="line">- Training-set:		<span class="number">55000</span></span><br><span class="line">- Test-set:		<span class="number">10000</span></span><br><span class="line">- Validation-set:	<span class="number">5000</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># tensorflow的官方demo就是使用SGD的方式训练的  </span></span><br><span class="line"><span class="comment"># Train</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">        batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">        print(batch_ys)</span><br><span class="line">        sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="控制模型的特征值在相同的范围内，模型能容易收敛"><a href="#控制模型的特征值在相同的范围内，模型能容易收敛" class="headerlink" title="控制模型的特征值在相同的范围内，模型能容易收敛"></a>控制模型的特征值在相同的范围内，模型能容易收敛</h4><p>意思是模型的训练数据要在特定的范围内，一个前一个很大，后一个值很小，训练的次数要更多才能到达最优值。</p>
+<p>如果训练的数据集在相对集中的范围内，只需要3次(如右图)就到达了最优解</p>
+<p><img src="/2018/01/08/检验softmax/feature_scaling.png" alt="feature_scaling"></p>
+<h3 id="得到训练好的权重"><a href="#得到训练好的权重" class="headerlink" title="得到训练好的权重"></a>得到训练好的权重</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">w = np.array([[<span class="number">-1.00487339</span>, - <span class="number">1.15891397</span>, <span class="number">2.16378975</span>],</span><br><span class="line">              [<span class="number">-0.44634497</span>, <span class="number">4.75635386</span>, <span class="number">-4.31000757</span>]])</span><br><span class="line">b = np.array([<span class="number">-0.44633889</span>, <span class="number">4.75634384</span>, <span class="number">-4.31001806</span>])</span><br><span class="line">y = np.matmul([<span class="number">6</span>, <span class="number">1</span>], w) + b </span><br><span class="line"><span class="comment"># [100%][-6.9219242   2.55921388  4.36271287]</span></span><br><span class="line"><span class="comment"># [6,1]的分类是[0,0,1] 看到argmax([-6.9219242   2.55921388  4.36271287]) = 2  因此预测值是正确的</span></span><br><span class="line"><span class="comment"># tensorflow中有一种以arg开头的api，取数组的特定值的index</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/MNIST-FOR-ML/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,8 +608,7 @@
             <h2 id="MNIST-FOR-ML"><a href="#MNIST-FOR-ML" class="headerlink" title="MNIST FOR ML"></a>MNIST FOR ML</h2><p>tensorflow<a href="https://www.tensorflow.org/get_started/mnist/beginners" target="_blank" rel="noopener">tensorflow.org</a></p>
 <p><a href="https://github.com/ccwhale/tfTutorials/blob/master/tutorials/mnist/mnist_softmax.py" target="_blank" rel="noopener">tensorflow官网源代码</a></p>
 <p><a href="https://github.com/ccwhale/tfTutorials/blob/master/tutorials/hvassTutorials/simpleLinearModel.py" target="_blank" rel="noopener">更详细的教程</a></p>
-<h3 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h3><h4 id="什么是softmax函数"><a href="#什么是softmax函数" class="headerlink" title="什么是softmax函数"></a>什么是softmax函数</h4><p> $$\sum\limits_{j} W_{i,~ j} x_j + b_i$$</p>
-<p>对应代码中</p>
+<h3 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h3><h4 id="什么是softmax函数"><a href="#什么是softmax函数" class="headerlink" title="什么是softmax函数"></a>什么是softmax函数</h4><p>对应代码中</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>, <span class="number">10</span>]))</span><br><span class="line"><span class="comment"># tf.matmul(x, W) (-1,784) (784,10)得到y (-1,10)的矩阵</span></span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"><span class="comment"># y是预测值 这是训练定义的模型</span></span><br><span class="line">y = tf.matmul(x, W) + b</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/01/05/MNIST-FOR-ML/softmax.jpg" alt="softmax"></p>
 <h4 id="交叉熵为什么可以评估系统的好坏"><a href="#交叉熵为什么可以评估系统的好坏" class="headerlink" title="交叉熵为什么可以评估系统的好坏"></a>交叉熵为什么可以评估系统的好坏</h4><p>对应代码</p>
@@ -341,8 +625,8 @@
 <li><strong>可以将输出值控制到[0,1) 之间，在求损失函数的时候能够保证loss的值始终为正值。</strong></li>
 </ol>
 <p>第一层 函数 ： y = tf.matmul(x,w)+b</p>
-<p>第二次函数 ： s = softmax(y)</p>
-<p>第三层函数 :  loss = -y真实值lns</p>
+<p>第二次函数 ： s = softmax(y)     0&lt;=s&lt;1=0</p>
+<p>第三层函数 :  loss = -y真实值ln s  loss函数的值恒为正值，因此需要取反</p>
 <p>利用链式求导法则，求loss对每个w的偏倒数如下。</p>
 <p><img src="/2018/01/05/MNIST-FOR-ML/IMG_0712.jpg" alt="IMG_0712"></p>
 <p><img src="/2018/01/05/MNIST-FOR-ML/IMG_0713.jpg" alt="IMG_0713"></p>
@@ -486,7 +770,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">input_batch = tf.constant(</span><br><span class="line">    [</span><br><span class="line">        [</span><br><span class="line">            [[<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>]],</span><br><span class="line">            [[<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>]],</span><br><span class="line">            [[<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>]],</span><br><span class="line">            [[<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>]],</span><br><span class="line">            [[<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>]],</span><br><span class="line">            [[<span class="number">0.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>], [<span class="number">1.0</span>], [<span class="number">0.0</span>]]</span><br><span class="line">        ]</span><br><span class="line">    ])</span><br><span class="line"><span class="comment"># 第一个方括号有一个方括号(1,)</span></span><br><span class="line"><span class="comment"># 第二个方括号有5个逗号+一个完整的两个括号(1,6)</span></span><br><span class="line"><span class="comment"># 第三个方括号有5个逗号+一个括号(1,6,6)</span></span><br><span class="line"><span class="comment"># 第四个括号有1个括号 (1,6,6,1)</span></span><br><span class="line">kernel = tf.constant([</span><br><span class="line">    [[[<span class="number">1.0</span>]], [[<span class="number">-1.0</span>]], [[<span class="number">-1.0</span>]]],</span><br><span class="line">    [[[<span class="number">-1.0</span>]], [[<span class="number">1.0</span>]], [[<span class="number">-1.0</span>]]],</span><br><span class="line">    [[[<span class="number">-1.0</span>]], [[<span class="number">-1.0</span>]], [[<span class="number">1.0</span>]]]</span><br><span class="line">])</span><br><span class="line"><span class="comment"># 第一个方括号有2个逗号+一个完整的三个括号 (3,)</span></span><br><span class="line"><span class="comment"># 第二个方括号有2个逗号+一个完整的两个括号的(3,3)</span></span><br><span class="line"><span class="comment"># 第三个方括号有1个括号(3,3,1)</span></span><br><span class="line"><span class="comment"># 第四个方括号有一个数字(3,3,1,1)</span></span><br></pre></td></tr></table></figure>
 <p>上面构建了一个<code>6*6</code>的输入和一个<code>3*3</code>的内核</p>
 <p>如果有两个卷积核</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[[[[ <span class="number">3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [<span class="number">-1.</span> <span class="number">-1.</span>]</span><br><span class="line">   [<span class="number">-3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [<span class="number">-1.</span> <span class="number">-1.</span>]]</span><br><span class="line"></span><br><span class="line">  [[<span class="number">-3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [ <span class="number">1.</span> <span class="number">-1.</span>]</span><br><span class="line">   [ <span class="number">0.</span> <span class="number">-2.</span>]</span><br><span class="line">   [<span class="number">-3.</span>  <span class="number">1.</span>]]</span><br><span class="line"></span><br><span class="line">  [[<span class="number">-3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [<span class="number">-3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [ <span class="number">0.</span> <span class="number">-2.</span>]</span><br><span class="line">   [ <span class="number">1.</span>  <span class="number">1.</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">3.</span> <span class="number">-1.</span>]</span><br><span class="line">   [<span class="number">-2.</span>  <span class="number">0.</span>]</span><br><span class="line">   [<span class="number">-2.</span> <span class="number">-4.</span>]</span><br><span class="line">   [<span class="number">-1.</span>  <span class="number">3.</span>]]]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">两个卷积层同时作用于输入的图片</span></span><br><span class="line"><span class="string">kernel = tf.constant([</span></span><br><span class="line"><span class="string">    [[[1.0, -1.0]], [[-1.0, 1.0]], [[-1.0, -1.0]]],</span></span><br><span class="line"><span class="string">    [[[-1.0, -1.0]], [[1.0, 1.0]], [[-1.0, -1.0]]],</span></span><br><span class="line"><span class="string">    [[[-1.0, -1.0]], [[-1.0, 1.0]], [[1.0, -1.0]]]</span></span><br><span class="line"><span class="string">])</span></span><br><span class="line"><span class="string"># 输出(1,4,4,2)的图片</span></span><br><span class="line"><span class="string">[[[[ 3. -1.]</span></span><br><span class="line"><span class="string">   [-1. -1.]</span></span><br><span class="line"><span class="string">   [-3. -1.]</span></span><br><span class="line"><span class="string">   [-1. -1.]]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  [[-3. -1.]</span></span><br><span class="line"><span class="string">   [ 1. -1.]</span></span><br><span class="line"><span class="string">   [ 0. -2.]</span></span><br><span class="line"><span class="string">   [-3.  1.]]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  [[-3. -1.]</span></span><br><span class="line"><span class="string">   [-3. -1.]</span></span><br><span class="line"><span class="string">   [ 0. -2.]</span></span><br><span class="line"><span class="string">   [ 1.  1.]]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  [[ 3. -1.]</span></span><br><span class="line"><span class="string">   [-2.  0.]</span></span><br><span class="line"><span class="string">   [-2. -4.]</span></span><br><span class="line"><span class="string">   [-1.  3.]]]]</span></span><br><span class="line"><span class="string"># 上例中一个卷积内核有9个参数 一共有3*3*2 = 18个参数</span></span><br><span class="line"><span class="string"># 对(1,4,4,2)的图片用2*2的内核在进行一次卷积输出四维的图片</span></span><br><span class="line"><span class="string"># 一个2*2的内核有2个参数，每个内核要作用上一层输出的二维的立方体，因此一个内核有8个参数</span></span><br><span class="line"><span class="string"># 输出四维的图片，有四个内核，第二层有32个参数</span></span><br></pre></td></tr></table></figure>
 <h3 id="在真实场景的应用"><a href="#在真实场景的应用" class="headerlink" title="在真实场景的应用"></a>在真实场景的应用</h3><h4 id="定义一个卷积核"><a href="#定义一个卷积核" class="headerlink" title="定义一个卷积核"></a>定义一个卷积核</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new_weights</span><span class="params">(shape)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.Variable(tf.truncated_normal(shape, stddev=<span class="number">0.05</span>))</span><br><span class="line"><span class="comment"># 从截断正态分布中随机获取的矩阵(truncate_normal截断正态分布)</span></span><br><span class="line"><span class="comment"># 第一层卷积的shape(5,5,1,16) 包含的参数有400个，这400个参数是由训练得到最佳值</span></span><br><span class="line"><span class="comment"># 第二层卷积的shape(5,5,16,36) 包含5*5*16*36个参数 也是由训练得到</span></span><br></pre></td></tr></table></figure>
 
           
@@ -1319,7 +1603,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
