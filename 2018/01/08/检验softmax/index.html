@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/01/08/检验softmax/linear_model.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/01/08/检验softmax/局部最优解.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/08/检验softmax/feature_scaling.png">
-<meta property="og:updated_time" content="2018-01-09T10:18:35.867Z">
+<meta property="og:updated_time" content="2018-01-09T16:49:17.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="检验softmax">
 <meta name="twitter:description" content="是否大于5岁的测试democsdn 可执行代码的位置  生成训练数据和测试数据模型的label数据集是one-hot编码或者是它的真实值 如果year大于5岁，则标签设置为：[0, 0, 1]；  数组的第二个位置为1，因此标签的真实分类是2 否则，标签设置为：[0, 1, 0]。数组的第一个位置为1，因此标签的真实分类是1 123456789101112131415161718192021# 生">
@@ -352,7 +352,8 @@
 <h3 id="梯度下降-Gradient-Descent-的策略"><a href="#梯度下降-Gradient-Descent-的策略" class="headerlink" title="梯度下降(Gradient Descent)的策略"></a>梯度下降(Gradient Descent)的策略</h3><h4 id="使用可以自我调整learning-rate的优化函数"><a href="#使用可以自我调整learning-rate的优化函数" class="headerlink" title="使用可以自我调整learning rate的优化函数"></a>使用可以自我调整learning rate的优化函数</h4><p>在训练的过程中，我们假定刚开始训练的时候，离cross_entropy的最小值(最低点)很远，这个时候我们希望learning rate很大。当训练快要接近函数的最低点的时候，我们希望learning rate很小。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.8</span>).minimize(cross_entropy)</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    调整不同的优化函数显示不同的准确度(控制learning Rate为0.5)</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdamOptimizer      | 0.8679</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdagradOptimizer   | 0.9202</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | GradientDescentOptimizer | 0.9152</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    调整不同的learning rate(控制梯度函数为GradientDescentOptimizer 0.5=0.9152 )</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.1                | 0.9097</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.2                | 0.9163</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.3                 | 0.9181</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.8                 | 0.9234</span></span><br><span class="line"><span class="string">    ==============================</span></span><br></pre></td></tr></table></figure>
 <h5 id="AdagradOptimizer"><a href="#AdagradOptimizer" class="headerlink" title="AdagradOptimizer"></a>AdagradOptimizer</h5><p>是一个自我调整learning rate的函数</p>
-<p>$$w^{t+1} = w^t - \frac{\eta}{\sum_{i=0}^t (g^i)^2} * g^t$$<br>优化函数认为训练的开始梯度Gradient(也就是偏导)很大，离训练的终点很小，需要很大的learning rate</p>
+<p>$$w^{t+1} = w^t - \frac{\eta}{\sum_{i=0}^t (g^i)^2} * g^t$$</p>
+<p>优化函数认为训练的开始梯度Gradient(也就是偏导)很大，离训练的终点很小，需要很大的learning rate</p>
 <p>在AdagradOptimizer方法中：</p>
 <p>$g^t$很大的时候，分母也很大，$\eta$就很小</p>
 <p>$g^t$很小的时候，分母不一定很小，因为分母是前面所有导数的和，$\eta$就可能还是很小</p>
@@ -493,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -506,7 +507,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

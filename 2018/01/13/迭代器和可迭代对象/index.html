@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="tensorflow," />
+  <meta name="keywords" content="python java," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="搭建开发环境安装tensorflow 1.4.112345678910111213# 默认安装到python3.6pip3 install tensorflow # 本机存在python3.5 3.6 可以更细分pip命令，确保pip的版本在8以上pip3 --version#9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/">
-<meta name="keywords" content="tensorflow">
+<meta name="description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
+<meta name="keywords" content="python java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建tensorflow开发环境">
-<meta property="og:url" content="http://yoursite.com/2017/12/24/搭建tensorflow开发环境/index.html">
+<meta property="og:title" content="迭代器和可迭代对象">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/迭代器和可迭代对象/index.html">
 <meta property="og:site_name" content="虫虫呀">
-<meta property="og:description" content="搭建开发环境安装tensorflow 1.4.112345678910111213# 默认安装到python3.6pip3 install tensorflow # 本机存在python3.5 3.6 可以更细分pip命令，确保pip的版本在8以上pip3 --version#9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/">
+<meta property="og:description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-24T06:47:10.799Z">
+<meta property="og:updated_time" content="2018-01-22T13:31:12.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建tensorflow开发环境">
-<meta name="twitter:description" content="搭建开发环境安装tensorflow 1.4.112345678910111213# 默认安装到python3.6pip3 install tensorflow # 本机存在python3.5 3.6 可以更细分pip命令，确保pip的版本在8以上pip3 --version#9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/">
+<meta name="twitter:title" content="迭代器和可迭代对象">
+<meta name="twitter:description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/24/搭建tensorflow开发环境/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/13/迭代器和可迭代对象/"/>
 
 
 
 
 
-  <title>搭建tensorflow开发环境 | 虫虫呀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>迭代器和可迭代对象 | 虫虫呀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/24/搭建tensorflow开发环境/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/迭代器和可迭代对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiejq">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">搭建tensorflow开发环境</h1>
+          <h1 class="post-title" itemprop="name headline">迭代器和可迭代对象</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T14:08:17+08:00">
-                2017-12-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T11:21:46+08:00">
+                2018-01-13
               </time>
             
 
@@ -320,19 +320,33 @@
       
 
       
-        <h2 id="搭建开发环境"><a href="#搭建开发环境" class="headerlink" title="搭建开发环境"></a>搭建开发环境</h2><h3 id="安装tensorflow-1-4-1"><a href="#安装tensorflow-1-4-1" class="headerlink" title="安装tensorflow 1.4.1"></a>安装tensorflow 1.4.1</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认安装到python3.6</span></span><br><span class="line">pip3 install tensorflow </span><br><span class="line"><span class="comment"># 本机存在python3.5 3.6 可以更细分pip命令，确保pip的版本在8以上</span></span><br><span class="line">pip3 --version</span><br><span class="line"><span class="comment">#9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)</span></span><br><span class="line">pip3.5 install tensorflow</span><br><span class="line"><span class="comment"># 指定安装tensorflow的版本</span></span><br><span class="line">pip3 install tensorflow==1.1.0</span><br><span class="line"><span class="comment"># 查看python中按照tensorflow的版本</span></span><br><span class="line">python <span class="comment"># 进入python解释器</span></span><br><span class="line">import tensorflow as tf</span><br><span class="line">tf.__version__</span><br><span class="line"><span class="comment"># 输出tensorflow的版本</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://www.tensorflow.org/install/install_mac" target="_blank" rel="noopener">tenserflow安装</a></p>
-<h3 id="更新tensorflow的版本"><a href="#更新tensorflow的版本" class="headerlink" title="更新tensorflow的版本"></a>更新tensorflow的版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade tensorflow </span><br><span class="line"><span class="comment"># RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6 #14273</span></span><br><span class="line"><span class="comment"># 根据本机python的版本和操作系统的版本进行更新</span></span><br><span class="line">pip3 install --ignore-installed --upgrade <span class="string">"https://github.com/lakshayg/tensorflow-build/raw/master/tensorflow-1.4.1-cp36-cp36m-macosx_10_13_x86_64.whl"</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/tensorflow/tensorflow/issues/14273" target="_blank" rel="noopener">更新tensorflow出现问题</a></p>
-<p><a href="https://github.com/lakshayg/tensorflow-build" target="_blank" rel="noopener">支持AVX，FMA，SSE的TensorFlow二进制文件</a></p>
-<h3 id="安装PyCharm"><a href="#安装PyCharm" class="headerlink" title="安装PyCharm"></a>安装PyCharm</h3><p><a href="https://www.jetbrains.com/pycharm/download/#section=mac" target="_blank" rel="noopener">下载地址</a></p>
-<p><a href="http://www.imsxm.com/jetbrains-license-server.html" target="_blank" rel="noopener">激活</a></p>
-<p>安装pycharm相应的插件(Jetbrains的markdown插件and so on)</p>
-<h2 id="熟悉tensorflow"><a href="#熟悉tensorflow" class="headerlink" title="熟悉tensorflow"></a>熟悉tensorflow</h2><h3 id="models"><a href="#models" class="headerlink" title="models"></a>models</h3><p><strong>仅支持tensorflow1.4以上的版本，才能成功运行</strong></p>
-<p><a href="https://github.com/tensorflow/models" target="_blank" rel="noopener">fetch工程</a></p>
-<h3 id="tensorflow的examples"><a href="#tensorflow的examples" class="headerlink" title="tensorflow的examples"></a>tensorflow的examples</h3><p>tensorflow中自己包含深度学习的例子。fetch工程后，必须把example模块单独拿出来放到新的模块才能运行。</p>
-<p><a href="https://github.com/tensorflow" target="_blank" rel="noopener">tensorflow搭建</a></p>
-<p>以上，tensorflow的环境搭建完成。</p>
+        <h2 id="iterable和iterator"><a href="#iterable和iterator" class="headerlink" title="iterable和iterator"></a>iterable和iterator</h2><p>在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。</p>
+<blockquote>
+<p>看了一篇博文<a href="http://182.61.41.220:8080/blog/article.ftl?id=1" target="_blank" rel="noopener">java集合的问题</a>，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。</p>
+</blockquote>
+<p>分析下为什么。</p>
+<h3 id="增强式for循环是编译的蜜糖"><a href="#增强式for循环是编译的蜜糖" class="headerlink" title="增强式for循环是编译的蜜糖"></a>增强式for循环是编译的蜜糖</h3><p>增强式for循环可以用在数组等等上面</p>
+<p>增强式for循环用在操作Iterable接口的对象上面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(Object o : iterable)&#123;</span><br><span class="line">    <span class="comment">//执行的代码块</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//会在编译程序展开为</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  Object o;</span><br><span class="line">  <span class="keyword">for</span>(Iterator i$ = iterable.iterator();i$.hasNext();代码块)&#123;</span><br><span class="line">    o = i$.next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以看到增强式for循环实际上是用了iterator对象的实例。</span></span><br></pre></td></tr></table></figure>
+<p>文章第一种方式移除元素可以看出，集合自身的remove操作会修改自身含有的数据，实例自身的结构会变</p>
+<p>文章的第二种移除元素的方式是：在增强式for循环中执行collection里面定义的remove方法。发生的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> java.util.ConcurrentModificationException</span><br><span class="line">	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:<span class="number">901</span>)</span><br><span class="line">	at java.util.ArrayList$Itr.next(ArrayList.java:<span class="number">851</span>)</span><br><span class="line">	at org.ai.cc.examples.App.main(App.java:<span class="number">42</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">497</span>)</span><br><span class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:<span class="number">147</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>修正原文，不一定要是最后一个元素，在增强式for循环中执行集合本身的remove方法都会报这个错</strong></p>
+<p>原因：</p>
+<blockquote>
+<p>iterator在调用next方法时，会检查列表是否被修改过，如果被修改过，抛出ConcurrentModificationException异常。也就是在Collection或Map在迭代过程中尝试直接修改Collection或Map的内容时会抛异常</p>
+<p>Iterator被创建后会建立一个指向原来对象的单链索引，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引针织往后移动就找不到要迭代的对象，按照fail-fast原则Iterator会马上抛出java.util.ConcurrentModificationException</p>
+<p>但是使用iterator本身方法remove()对象时，Iterator.remove()方法会在删除当前迭代对象的同时维护索引的一致性</p>
+</blockquote>
+<p>总结：</p>
+<ol>
+<li>增强式for循环实际是内部类产生的迭代器iterator,操作了iterator的hasNext()和next()，因为next()方法检查到有变化就会抛出异常，因此在增强式for循环不能直接修改C和Map的内容</li>
+<li>在Map,Collection,不要用它们的API直接修改集合的内容，用iterator的remove()方法</li>
+</ol>
+<ol>
+<li>jdk1.5以前iterator方法在Collection中，jdk1.5~1.7增加了Iterable接口，Collection实现了Iterable接口，Iterable接口里面只有iteartor()方法，只要实现了Iterable接口，就能使用for(xx:xx)语句</li>
+<li>jdk1.8给Iterable接口增加了更多的方法。待学习。java的Iterable和iterator是一模一样的机制。</li>
+</ol>
 
       
     </div>
@@ -350,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+            <a href="/tags/python-java/" rel="tag"># python java</a>
           
         </div>
       
@@ -363,14 +377,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/08/cifar数据集/" rel="next" title="cifar数据集">
+                <i class="fa fa-chevron-left"></i> cifar数据集
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/24/机器学习相关概念/" rel="prev" title="机器学习相关概念">
-                机器学习相关概念 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/15/abstract-method和interface的区别/" rel="prev" title="abstract method和interface的区别">
+                abstract method和interface的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建开发环境"><span class="nav-number">1.</span> <span class="nav-text">搭建开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装tensorflow-1-4-1"><span class="nav-number">1.1.</span> <span class="nav-text">安装tensorflow 1.4.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新tensorflow的版本"><span class="nav-number">1.2.</span> <span class="nav-text">更新tensorflow的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装PyCharm"><span class="nav-number">1.3.</span> <span class="nav-text">安装PyCharm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熟悉tensorflow"><span class="nav-number">2.</span> <span class="nav-text">熟悉tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#models"><span class="nav-number">2.1.</span> <span class="nav-text">models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tensorflow的examples"><span class="nav-number">2.2.</span> <span class="nav-text">tensorflow的examples</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iterable和iterator"><span class="nav-number">1.</span> <span class="nav-text">iterable和iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增强式for循环是编译的蜜糖"><span class="nav-number">1.1.</span> <span class="nav-text">增强式for循环是编译的蜜糖</span></a></li></ol></li></ol></div>
             
 
           </div>

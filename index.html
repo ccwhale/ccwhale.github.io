@@ -249,6 +249,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/abstract-method和interface的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/15/abstract-method和interface的区别/" itemprop="url">abstract method和interface的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T16:29:26+08:00">
+                2018-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="abstract-method和interface的区别"><a href="#abstract-method和interface的区别" class="headerlink" title="abstract method和interface的区别"></a>abstract method和interface的区别</h2><h3 id="语法层面上的区别"><a href="#语法层面上的区别" class="headerlink" title="语法层面上的区别"></a>语法层面上的区别</h3><ol>
+<li>抽象类可以提供成员方法的细节，而接口中只能存在public abstract方法</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中只能是public static final类型的</li>
+<li>接口中不能含有静态代码块以及静态方法</li>
+</ol>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接口中的方法默认为public abstract类型的,在接口中不用public修饰方法，IDE反而提示多余</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//由于接口中不能含有代码块，也就是不能定义构造函数，因此接口中的属性必须直接初始化</span></span><br><span class="line"><span class="comment">//静态类型虽然可以在定义的时候不初始化，在构造函数中初始化，但是在接口中必须直接初始化</span></span><br><span class="line">String name = <span class="string">"xiejq"</span>;<span class="comment">//没有显式说明是public static类型的</span></span><br></pre></td></tr></table></figure>
+<h3 id="设计层面上的区别"><a href="#设计层面上的区别" class="headerlink" title="设计层面上的区别"></a>设计层面上的区别</h3><p>  abstract method通常作为设计模式<strong>模板设计模式</strong>的最顶端上的类，用来封装算法。</p>
+<p>比如处理订单过程中，有订单对象生成(<code>init</code>)预处理这些操作，订单信息入库这些公共的操作，在Abstract method中存在具体实现，在Abstract method中不具体实现preProcess()，process(),afterProcess()的过程，通过不同业务的对象来继承这个抽象对象，生成订单的时候执行自己的预处理 处理 处理完成的代码，在设计模式上是模板设计模式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Order <span class="title">newOrder</span><span class="params">(NewBusinessParams businessParams)</span> <span class="keyword">throws</span> EcpsException </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.businessParams = businessParams;</span><br><span class="line">	init();</span><br><span class="line">	validate();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		preProcess();	</span><br><span class="line">		process();</span><br><span class="line">		afterProcess();	</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			finalProcess();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			logger.error(<span class="string">"处理finalProcess失败"</span>, e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  接口的辐射设计模式，如果这个对象有接口中含有的行为，就实现这个接口中的抽象方法。</p>
+<p><a href="http://www.imooc.com/article/5093" target="_blank" rel="noopener">参考了这篇文章以及我们的工程</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/迭代器和可迭代对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiejq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="虫虫呀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/迭代器和可迭代对象/" itemprop="url">迭代器和可迭代对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T11:21:46+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="iterable和iterator"><a href="#iterable和iterator" class="headerlink" title="iterable和iterator"></a>iterable和iterator</h2><p>在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。</p>
+<blockquote>
+<p>看了一篇博文<a href="http://182.61.41.220:8080/blog/article.ftl?id=1" target="_blank" rel="noopener">java集合的问题</a>，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。</p>
+</blockquote>
+<p>分析下为什么。</p>
+<h3 id="增强式for循环是编译的蜜糖"><a href="#增强式for循环是编译的蜜糖" class="headerlink" title="增强式for循环是编译的蜜糖"></a>增强式for循环是编译的蜜糖</h3><p>增强式for循环可以用在数组等等上面</p>
+<p>增强式for循环用在操作Iterable接口的对象上面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(Object o : iterable)&#123;</span><br><span class="line">    <span class="comment">//执行的代码块</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//会在编译程序展开为</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  Object o;</span><br><span class="line">  <span class="keyword">for</span>(Iterator i$ = iterable.iterator();i$.hasNext();代码块)&#123;</span><br><span class="line">    o = i$.next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以看到增强式for循环实际上是用了iterator对象的实例。</span></span><br></pre></td></tr></table></figure>
+<p>文章第一种方式移除元素可以看出，集合自身的remove操作会修改自身含有的数据，实例自身的结构会变</p>
+<p>文章的第二种移除元素的方式是：在增强式for循环中执行collection里面定义的remove方法。发生的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> java.util.ConcurrentModificationException</span><br><span class="line">	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:<span class="number">901</span>)</span><br><span class="line">	at java.util.ArrayList$Itr.next(ArrayList.java:<span class="number">851</span>)</span><br><span class="line">	at org.ai.cc.examples.App.main(App.java:<span class="number">42</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">497</span>)</span><br><span class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:<span class="number">147</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>修正原文，不一定要是最后一个元素，在增强式for循环中执行集合本身的remove方法都会报这个错</strong></p>
+<p>原因：</p>
+<blockquote>
+<p>iterator在调用next方法时，会检查列表是否被修改过，如果被修改过，抛出ConcurrentModificationException异常。也就是在Collection或Map在迭代过程中尝试直接修改Collection或Map的内容时会抛异常</p>
+<p>Iterator被创建后会建立一个指向原来对象的单链索引，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引针织往后移动就找不到要迭代的对象，按照fail-fast原则Iterator会马上抛出java.util.ConcurrentModificationException</p>
+<p>但是使用iterator本身方法remove()对象时，Iterator.remove()方法会在删除当前迭代对象的同时维护索引的一致性</p>
+</blockquote>
+<p>总结：</p>
+<ol>
+<li>增强式for循环实际是内部类产生的迭代器iterator,操作了iterator的hasNext()和next()，因为next()方法检查到有变化就会抛出异常，因此在增强式for循环不能直接修改C和Map的内容</li>
+<li>在Map,Collection,不要用它们的API直接修改集合的内容，用iterator的remove()方法</li>
+</ol>
+<ol>
+<li>jdk1.5以前iterator方法在Collection中，jdk1.5~1.7增加了Iterable接口，Collection实现了Iterable接口，Iterable接口里面只有iteartor()方法，只要实现了Iterable接口，就能使用for(xx:xx)语句</li>
+<li>jdk1.8给Iterable接口增加了更多的方法。待学习。java的Iterable和iterator是一模一样的机制。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/cifar数据集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -468,7 +745,8 @@
 <h3 id="梯度下降-Gradient-Descent-的策略"><a href="#梯度下降-Gradient-Descent-的策略" class="headerlink" title="梯度下降(Gradient Descent)的策略"></a>梯度下降(Gradient Descent)的策略</h3><h4 id="使用可以自我调整learning-rate的优化函数"><a href="#使用可以自我调整learning-rate的优化函数" class="headerlink" title="使用可以自我调整learning rate的优化函数"></a>使用可以自我调整learning rate的优化函数</h4><p>在训练的过程中，我们假定刚开始训练的时候，离cross_entropy的最小值(最低点)很远，这个时候我们希望learning rate很大。当训练快要接近函数的最低点的时候，我们希望learning rate很小。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.8</span>).minimize(cross_entropy)</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    调整不同的优化函数显示不同的准确度(控制learning Rate为0.5)</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdamOptimizer      | 0.8679</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | AdagradOptimizer   | 0.9202</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | GradientDescentOptimizer | 0.9152</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    调整不同的learning rate(控制梯度函数为GradientDescentOptimizer 0.5=0.9152 )</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.1                | 0.9097</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.2                | 0.9163</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.3                 | 0.9181</span></span><br><span class="line"><span class="string">    ==============================</span></span><br><span class="line"><span class="string">    | 0.8                 | 0.9234</span></span><br><span class="line"><span class="string">    ==============================</span></span><br></pre></td></tr></table></figure>
 <h5 id="AdagradOptimizer"><a href="#AdagradOptimizer" class="headerlink" title="AdagradOptimizer"></a>AdagradOptimizer</h5><p>是一个自我调整learning rate的函数</p>
-<p>$$w^{t+1} = w^t - \frac{\eta}{\sum_{i=0}^t (g^i)^2} * g^t$$<br>优化函数认为训练的开始梯度Gradient(也就是偏导)很大，离训练的终点很小，需要很大的learning rate</p>
+<p>$$w^{t+1} = w^t - \frac{\eta}{\sum_{i=0}^t (g^i)^2} * g^t$$</p>
+<p>优化函数认为训练的开始梯度Gradient(也就是偏导)很大，离训练的终点很小，需要很大的learning rate</p>
 <p>在AdagradOptimizer方法中：</p>
 <p>$g^t$很大的时候，分母也很大，$\eta$就很小</p>
 <p>$g^t$很小的时候，分母不一定很小，因为分母是前面所有导数的和，$\eta$就可能还是很小</p>
@@ -903,6 +1181,7 @@
 <p><a href="https://www.youtube.com/watch?v=L8unuZNpWw8" target="_blank" rel="noopener">ML Lecture 8-3: Keras Demo</a></p>
 <p><a href="https://www.youtube.com/watch?v=FrKWiRv254g" target="_blank" rel="noopener">ML Lecture 10: Convolutional Neural Network</a></p>
 <p><a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank" rel="noopener">Hvass-Labs tensorflow教程</a></p>
+<p><a href="http://blog.topspeedsnail.com/archives/10399" target="_blank" rel="noopener">超级有意思的博客</a></p>
 
           
         
@@ -1421,141 +1700,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/24/搭建tensorflow开发环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiejq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/WechatIMG2.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="虫虫呀">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/24/搭建tensorflow开发环境/" itemprop="url">搭建tensorflow开发环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T14:08:17+08:00">
-                2017-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="搭建开发环境"><a href="#搭建开发环境" class="headerlink" title="搭建开发环境"></a>搭建开发环境</h2><h3 id="安装tensorflow-1-4-1"><a href="#安装tensorflow-1-4-1" class="headerlink" title="安装tensorflow 1.4.1"></a>安装tensorflow 1.4.1</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认安装到python3.6</span></span><br><span class="line">pip3 install tensorflow </span><br><span class="line"><span class="comment"># 本机存在python3.5 3.6 可以更细分pip命令，确保pip的版本在8以上</span></span><br><span class="line">pip3 --version</span><br><span class="line"><span class="comment">#9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)</span></span><br><span class="line">pip3.5 install tensorflow</span><br><span class="line"><span class="comment"># 指定安装tensorflow的版本</span></span><br><span class="line">pip3 install tensorflow==1.1.0</span><br><span class="line"><span class="comment"># 查看python中按照tensorflow的版本</span></span><br><span class="line">python <span class="comment"># 进入python解释器</span></span><br><span class="line">import tensorflow as tf</span><br><span class="line">tf.__version__</span><br><span class="line"><span class="comment"># 输出tensorflow的版本</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://www.tensorflow.org/install/install_mac" target="_blank" rel="noopener">tenserflow安装</a></p>
-<h3 id="更新tensorflow的版本"><a href="#更新tensorflow的版本" class="headerlink" title="更新tensorflow的版本"></a>更新tensorflow的版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade tensorflow </span><br><span class="line"><span class="comment"># RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6 #14273</span></span><br><span class="line"><span class="comment"># 根据本机python的版本和操作系统的版本进行更新</span></span><br><span class="line">pip3 install --ignore-installed --upgrade <span class="string">"https://github.com/lakshayg/tensorflow-build/raw/master/tensorflow-1.4.1-cp36-cp36m-macosx_10_13_x86_64.whl"</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/tensorflow/tensorflow/issues/14273" target="_blank" rel="noopener">更新tensorflow出现问题</a></p>
-<p><a href="https://github.com/lakshayg/tensorflow-build" target="_blank" rel="noopener">支持AVX，FMA，SSE的TensorFlow二进制文件</a></p>
-<h3 id="安装PyCharm"><a href="#安装PyCharm" class="headerlink" title="安装PyCharm"></a>安装PyCharm</h3><p><a href="https://www.jetbrains.com/pycharm/download/#section=mac" target="_blank" rel="noopener">下载地址</a></p>
-<p><a href="http://www.imsxm.com/jetbrains-license-server.html" target="_blank" rel="noopener">激活</a></p>
-<p>安装pycharm相应的插件(Jetbrains的markdown插件and so on)</p>
-<h2 id="熟悉tensorflow"><a href="#熟悉tensorflow" class="headerlink" title="熟悉tensorflow"></a>熟悉tensorflow</h2><h3 id="models"><a href="#models" class="headerlink" title="models"></a>models</h3><p><strong>仅支持tensorflow1.4以上的版本，才能成功运行</strong></p>
-<p><a href="https://github.com/tensorflow/models" target="_blank" rel="noopener">fetch工程</a></p>
-<h3 id="tensorflow的examples"><a href="#tensorflow的examples" class="headerlink" title="tensorflow的examples"></a>tensorflow的examples</h3><p>tensorflow中自己包含深度学习的例子。fetch工程后，必须把example模块单独拿出来放到新的模块才能运行。</p>
-<p><a href="https://github.com/tensorflow" target="_blank" rel="noopener">tensorflow搭建</a></p>
-<p>以上，tensorflow的环境搭建完成。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1603,7 +1754,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1616,7 +1767,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
