@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python java," />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
-<meta name="keywords" content="python java">
+<meta name="description" content="在redis中使用的keys命令引起的灾难 一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。  分析keys命令如何使redis阻塞  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迭代器和可迭代对象">
-<meta property="og:url" content="http://yoursite.com/2018/01/13/迭代器和可迭代对象/index.html">
+<meta property="og:title" content="在redis中使用的keys命令引起的灾难">
+<meta property="og:url" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/index.html">
 <meta property="og:site_name" content="虫虫呀">
-<meta property="og:description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
+<meta property="og:description" content="在redis中使用的keys命令引起的灾难 一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。  分析keys命令如何使redis阻塞  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-22T13:31:12.274Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png">
+<meta property="og:updated_time" content="2018-09-24T05:33:50.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迭代器和可迭代对象">
-<meta name="twitter:description" content="iterable和iterator在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。  看了一篇博文java集合的问题，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。  分析下为什么。 增强式for循环是编译的蜜糖增强式for循环可以用在数">
+<meta name="twitter:title" content="在redis中使用的keys命令引起的灾难">
+<meta name="twitter:description" content="在redis中使用的keys命令引起的灾难 一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。  分析keys命令如何使redis阻塞  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/13/迭代器和可迭代对象/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/"/>
 
 
 
 
 
-  <title>迭代器和可迭代对象 | 虫虫呀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>在redis中使用的keys命令引起的灾难 | 虫虫呀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/迭代器和可迭代对象/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiejq">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">迭代器和可迭代对象</h1>
+          <h1 class="post-title" itemprop="name headline">在redis中使用的keys命令引起的灾难</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T11:21:46+08:00">
-                2018-01-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T11:29:46+08:00">
+                2018-09-24
               </time>
             
 
@@ -320,32 +322,20 @@
       
 
       
-        <h2 id="iterable和iterator"><a href="#iterable和iterator" class="headerlink" title="iterable和iterator"></a>iterable和iterator</h2><p>在python和java中都有iterable和iterator，两种语言对着两个对象的使用规则是一样的。</p>
-<blockquote>
-<p>看了一篇博文<a href="http://182.61.41.220:8080/blog/article.ftl?id=1" target="_blank" rel="noopener">java集合的问题</a>，在java中删除元素，用集合中删除元素中循环删除多个元素不能用collection中的remove方法，而应该用iterator中的remove方法。</p>
+        <h2 id="在redis中使用的keys命令引起的灾难"><a href="#在redis中使用的keys命令引起的灾难" class="headerlink" title="在redis中使用的keys命令引起的灾难"></a>在redis中使用的keys命令引起的灾难</h2><blockquote>
+<p>一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。</p>
 </blockquote>
-<p>分析下为什么。</p>
-<h3 id="增强式for循环是编译的蜜糖"><a href="#增强式for循环是编译的蜜糖" class="headerlink" title="增强式for循环是编译的蜜糖"></a>增强式for循环是编译的蜜糖</h3><p>增强式for循环可以用在数组等等上面</p>
-<p>增强式for循环用在操作Iterable接口的对象上面</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(Object o : iterable)&#123;</span><br><span class="line">    <span class="comment">//执行的代码块</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//会在编译程序展开为</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Iterable iterable)</span></span>&#123;</span><br><span class="line">  Object o;</span><br><span class="line">  <span class="keyword">for</span>(Iterator i$ = iterable.iterator();i$.hasNext();代码块)&#123;</span><br><span class="line">    o = i$.next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以看到增强式for循环实际上是用了iterator对象的实例。</span></span><br></pre></td></tr></table></figure>
-<p>文章第一种方式移除元素可以看出，集合自身的remove操作会修改自身含有的数据，实例自身的结构会变</p>
-<p>文章的第二种移除元素的方式是：在增强式for循环中执行collection里面定义的remove方法。发生的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> java.util.ConcurrentModificationException</span><br><span class="line">	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:<span class="number">901</span>)</span><br><span class="line">	at java.util.ArrayList$Itr.next(ArrayList.java:<span class="number">851</span>)</span><br><span class="line">	at org.ai.cc.examples.App.main(App.java:<span class="number">42</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">497</span>)</span><br><span class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:<span class="number">147</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>修正原文，不一定要是最后一个元素，在增强式for循环中执行集合本身的remove方法都会报这个错</strong></p>
-<p>原因：</p>
-<blockquote>
-<p>iterator在调用next方法时，会检查列表是否被修改过，如果被修改过，抛出ConcurrentModificationException异常。也就是在Collection或Map在迭代过程中尝试直接修改Collection或Map的内容时会抛异常</p>
-<p>Iterator被创建后会建立一个指向原来对象的单链索引，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引针织往后移动就找不到要迭代的对象，按照fail-fast原则Iterator会马上抛出java.util.ConcurrentModificationException</p>
-<p>但是使用iterator本身方法remove()对象时，Iterator.remove()方法会在删除当前迭代对象的同时维护索引的一致性</p>
-</blockquote>
-<p>总结：</p>
-<ol>
-<li>增强式for循环实际是内部类产生的迭代器iterator,操作了iterator的hasNext()和next()，因为next()方法检查到有变化就会抛出异常，因此在增强式for循环不能直接修改C和Map的内容</li>
-<li>在Map,Collection,不要用它们的API直接修改集合的内容，用iterator的remove()方法</li>
+<h3 id="分析keys命令如何使redis阻塞"><a href="#分析keys命令如何使redis阻塞" class="headerlink" title="分析keys命令如何使redis阻塞"></a>分析keys命令如何使redis阻塞</h3><p>  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方案很好但是忽略了主数据节点挂掉的情况。Redis是单进程、单线程设计是其简单和稳定的继承，只要不是服务器发生了故障，在一般情况下是不会挂的。但同时，单进程、单线程的设计会导致redis接收到复杂指令时会忙于计算而停止响应，可能就因为一个Zset或者keys之类的指令,redis计算时间稍长，Keepalived就认为其停止了响应，直接更改虚IP的指向,然后做一次主从切换。过不了多久，zset和keys之类的指令又会从客户端发送过来，于是从机上又开始阻塞，Keepalived就一直在主从机之间不停地切换IP。终于主节点和从节点都堵了,Keepalived发现后，居然直接把虚IP释放了，然后所有的客户端都无法连接redis了，只能等运维到线上手工绑定才行。</p>
+<h3 id="使用redis注意点"><a href="#使用redis注意点" class="headerlink" title="使用redis注意点"></a>使用redis注意点</h3><ol>
+<li>redis被keys命令阻塞了</li>
+<li>Keepalived切换虚IP失败,虚IP被释放了</li>
+<li>用Redis做计算了,Redis的CPU占用率成了100%了</li>
+<li>主从同步失败了</li>
+<li>Redis客户端连接数爆了(网卡打满)</li>
 </ol>
-<ol>
-<li>jdk1.5以前iterator方法在Collection中，jdk1.5~1.7增加了Iterable接口，Collection实现了Iterable接口，Iterable接口里面只有iteartor()方法，只要实现了Iterable接口，就能使用for(xx:xx)语句</li>
-<li>jdk1.8给Iterable接口增加了更多的方法。待学习。java的Iterable和iterator是一模一样的机制。</li>
+<p><img src="/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png" alt="redids"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>客户端Jedis不能有keys命令的接口防止开发人员误用</li>
 </ol>
 
       
@@ -364,7 +354,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python-java/" rel="tag"># python java</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -377,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/08/cifar数据集/" rel="next" title="cifar数据集">
-                <i class="fa fa-chevron-left"></i> cifar数据集
+              <a href="/2018/01/28/java数据类型和自动装箱/" rel="next" title="java数据类型和自动装箱">
+                <i class="fa fa-chevron-left"></i> java数据类型和自动装箱
               </a>
             
           </div>
@@ -386,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/15/abstract-method和interface的区别/" rel="prev" title="abstract method和interface的区别">
-                abstract method和interface的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iterable和iterator"><span class="nav-number">1.</span> <span class="nav-text">iterable和iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增强式for循环是编译的蜜糖"><span class="nav-number">1.1.</span> <span class="nav-text">增强式for循环是编译的蜜糖</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在redis中使用的keys命令引起的灾难"><span class="nav-number">1.</span> <span class="nav-text">在redis中使用的keys命令引起的灾难</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析keys命令如何使redis阻塞"><span class="nav-number">1.1.</span> <span class="nav-text">分析keys命令如何使redis阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用redis注意点"><span class="nav-number">1.2.</span> <span class="nav-text">使用redis注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
