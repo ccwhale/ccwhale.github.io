@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="虫虫呀">
 <meta property="og:description" content="在redis中使用的keys命令引起的灾难 一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。  分析keys命令如何使redis阻塞  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png">
-<meta property="og:updated_time" content="2018-09-24T05:33:50.073Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/redids.png">
+<meta property="og:updated_time" content="2018-09-24T05:38:42.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在redis中使用的keys命令引起的灾难">
 <meta name="twitter:description" content="在redis中使用的keys命令引起的灾难 一直在书上看到redis中不能使用keys命令,9.20号周五下午四点多,访问应用变慢,之后运维组发现是由于redis的keys命令导致了缓存挂了。  分析keys命令如何使redis阻塞  Redis的使用为了保证高可用性,一般开启了主从+keepalived,用虚IP地址在master和slave两遍漂移,master挂了直接切换到slave。这种方">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/24/在redis中使用的keys命令引起的灾难/redids.png">
 
 
 
@@ -333,7 +333,7 @@
 <li>主从同步失败了</li>
 <li>Redis客户端连接数爆了(网卡打满)</li>
 </ol>
-<p><img src="/2018/09/24/在redis中使用的keys命令引起的灾难/Users/cc/limedroid.github.io/source/_posts/在redis中使用的keys命令引起的灾难/redids.png" alt="redids"></p>
+<p><img src="/2018/09/24/在redis中使用的keys命令引起的灾难/redids.png" alt="redids"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>客户端Jedis不能有keys命令的接口防止开发人员误用</li>
 </ol>
